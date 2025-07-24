@@ -171,6 +171,7 @@ func check_if_stopped():
 		rooster_b.linear_velocity = Vector2.ZERO
 		rooster_b.angular_velocity = 0.0
 		$WinnerStopTimer.start()
+		#test
 
 
 func _on_WinnerStopTimer_timeout():
