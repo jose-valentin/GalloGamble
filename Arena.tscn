@@ -1,0 +1,191 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgetqwegif8qd"]
+
+[ext_resource type="Script" uid="uid://b70onkiuuyyk6" path="res://Arena.gd" id="1_uj4qe"]
+[ext_resource type="PhysicsMaterial" uid="uid://yycae7cwwn71" path="res://RoostersArena.tres" id="3_uj4qe"]
+[ext_resource type="Texture2D" uid="uid://cpniejpdupg4e" path="res://images-removebg-preview.png" id="3_vbyki"]
+[ext_resource type="Texture2D" uid="uid://tdkv1xvakfnf" path="res://Tiling-Grass-Texture-Banner.jpg" id="4_8qske"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4qe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jycnn"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml6qp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj4qe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uj4qe"]
+font_size = 110
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jycnn"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(222, 81)
+scale = Vector2(0.745, 0.745)
+script = ExtResource("1_uj4qe")
+
+[node name="wall" type="Node2D" parent="."]
+position = Vector2(18.7919, 1053.69)
+scale = Vector2(3.28, 3.28)
+
+[node name="detector" type="Area2D" parent="wall"]
+scale = Vector2(3.28, 3.28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/detector"]
+position = Vector2(14.7651, -16.1074)
+scale = Vector2(3.28, 3.28)
+shape = SubResource("RectangleShape2D_uj4qe")
+
+[node name="bouncer" type="StaticBody2D" parent="wall"]
+scale = Vector2(3.28, 3.28)
+physics_material_override = SubResource("PhysicsMaterial_jycnn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/bouncer"]
+position = Vector2(14.7651, -16.1074)
+scale = Vector2(3.28, 3.28)
+shape = SubResource("RectangleShape2D_ml6qp")
+
+[node name="wall2" type="Node2D" parent="."]
+scale = Vector2(7.945, 7.945)
+
+[node name="detector" type="Area2D" parent="wall2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/detector"]
+position = Vector2(22.301, -52.5424)
+scale = Vector2(5.665, 5.665)
+shape = SubResource("RectangleShape2D_uj4qe")
+
+[node name="bouncer" type="StaticBody2D" parent="wall2"]
+physics_material_override = SubResource("PhysicsMaterial_jycnn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/bouncer"]
+position = Vector2(22.301, -52.5424)
+scale = Vector2(5.665, 5.665)
+shape = SubResource("RectangleShape2D_ml6qp")
+
+[node name="wall3" type="Node2D" parent="."]
+position = Vector2(-10.605, 0)
+scale = Vector2(1.34, 1.34)
+
+[node name="detector" type="Area2D" parent="wall3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3/detector"]
+position = Vector2(613.944, 182.31)
+scale = Vector2(21.255, 21.255)
+shape = SubResource("RectangleShape2D_uj4qe")
+
+[node name="bouncer" type="StaticBody2D" parent="wall3"]
+physics_material_override = SubResource("PhysicsMaterial_jycnn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3/bouncer"]
+position = Vector2(614.274, 182.521)
+scale = Vector2(21.255, 21.255)
+shape = SubResource("RectangleShape2D_ml6qp")
+
+[node name="wall4" type="Node2D" parent="."]
+scale = Vector2(4.57, 4.57)
+
+[node name="detector" type="Area2D" parent="wall4"]
+position = Vector2(0, -1.34228)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4/detector"]
+position = Vector2(-100.451, 57.6095)
+scale = Vector2(6.135, 6.135)
+shape = SubResource("RectangleShape2D_uj4qe")
+
+[node name="bouncer" type="StaticBody2D" parent="wall4"]
+position = Vector2(-75.7787, -42.5888)
+physics_material_override = SubResource("PhysicsMaterial_jycnn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4/bouncer"]
+position = Vector2(-25.2831, 99.2202)
+scale = Vector2(6.135, 6.135)
+shape = SubResource("RectangleShape2D_ml6qp")
+
+[node name="Terrain" type="Sprite2D" parent="."]
+position = Vector2(177.181, 280.537)
+scale = Vector2(0.470845, 0.745)
+texture = ExtResource("4_8qske")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0872
+offset_top = 224.161
+offset_right = 318.087
+offset_bottom = 363.161
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.745, 0.745)
+text = "DUEL!"
+metadata/_edit_use_anchors_ = true
+
+[node name="RoosterA" type="RigidBody2D" parent="."]
+position = Vector2(-112.752, 453.691)
+scale = Vector2(1.6, 1.6)
+physics_material_override = ExtResource("3_uj4qe")
+
+[node name="Sprite2D" type="Sprite2D" parent="RoosterA"]
+scale = Vector2(0.11, 0.145)
+texture = ExtResource("3_vbyki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterA"]
+scale = Vector2(1.43, 1.43)
+shape = SubResource("CircleShape2D_uj4qe")
+
+[node name="RoosterB" type="RigidBody2D" parent="."]
+position = Vector2(438.926, 122.148)
+scale = Vector2(1.13, 1.13)
+physics_material_override = ExtResource("3_uj4qe")
+
+[node name="Sprite2D" type="Sprite2D" parent="RoosterB"]
+self_modulate = Color(100, 0, 0, 1)
+scale = Vector2(0.19, 0.14)
+texture = ExtResource("3_vbyki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterB"]
+scale = Vector2(1.74, 1.645)
+shape = SubResource("CircleShape2D_uj4qe")
+
+[node name="ResultLabel" type="Label" parent="."]
+z_index = 10
+offset_left = 42.953
+offset_top = 95.302
+offset_right = 342.953
+offset_bottom = 295.302
+scale = Vector2(0.745, 0.745)
+label_settings = SubResource("LabelSettings_uj4qe")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GravityZone" type="Area2D" parent="."]
+position = Vector2(154.362, 279.195)
+scale = Vector2(4.815, 4.815)
+gravity_space_override = 3
+gravity_point = true
+gravity = 104.237
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
+scale = Vector2(5.675, 5.675)
+shape = SubResource("CircleShape2D_jycnn")
+
+[node name="WinnerStopTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlayAgainButton" type="Button" parent="."]
+visible = false
+offset_left = 220.134
+offset_top = 428.188
+offset_right = 466.134
+offset_bottom = 480.188
+text = "Main Menu"
+
+[connection signal="body_entered" from="wall/detector" to="." method="_on_Wall_body_entered"]
+[connection signal="body_entered" from="wall2/detector" to="." method="_on_Wall_body_entered"]
+[connection signal="body_entered" from="wall3/detector" to="." method="_on_Wall_body_entered"]
+[connection signal="body_entered" from="wall4/detector" to="." method="_on_Wall_body_entered"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]

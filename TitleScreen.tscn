@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvuo5icup4h6t"]
+
+[ext_resource type="Script" uid="uid://boa55q7ufsr6u" path="res://TitleScreen.gd" id="1_fnlyl"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fnlyl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 67.0
+offset_top = 38.0
+offset_right = 169.0
+offset_bottom = 146.0
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 16.0
+offset_right = 74.0
+offset_bottom = 47.0
+text = "50/50"
+
+[node name="Button2" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 59.0
+offset_right = 78.0
+offset_bottom = 90.0
+text = "Arena"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ColorRect/Button2" to="." method="_on_Button2_pressed"]
