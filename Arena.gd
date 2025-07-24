@@ -77,9 +77,10 @@ var max_angular_velocityA = 200.0
 var max_angular_velocityB = 200.0
 
 func _physics_process(delta):
-	if !winCheck:
+	if start_button.disabled and !winCheck:
 		rooster_a.angular_velocity = max_angular_velocityA
 		rooster_b.angular_velocity = -max_angular_velocityB
+
 
 
 	var angular_damp_factor = 0.0599
