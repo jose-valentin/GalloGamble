@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b461mwdlkvram"]
 
 [ext_resource type="Script" uid="uid://dwbxkgsbknivq" path="res://BattleScene.gd" id="1_hvnqj"]
-[ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://Gallo-PNG-Pic.png" id="2_musxc"]
-[ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="3_hvnqj"]
+[ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://art/Gallo-PNG-Pic.png" id="2_musxc"]
+[ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://art/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="3_hvnqj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hvnqj"]
 

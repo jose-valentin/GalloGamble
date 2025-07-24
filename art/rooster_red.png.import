@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ugrrt2bhev5"
-path="res://.godot/imported/Gallo-PNG-Pic.png-b06761cb62051e415277251a6130c5c2.ctex"
+uid="uid://dmn7sw7i38tcm"
+path="res://.godot/imported/rooster_red.png-94359032663e0744fcca9240468bfa07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gallo-PNG-Pic.png"
-dest_files=["res://.godot/imported/Gallo-PNG-Pic.png-b06761cb62051e415277251a6130c5c2.ctex"]
+source_file="res://art/rooster_red.png"
+dest_files=["res://.godot/imported/rooster_red.png-94359032663e0744fcca9240468bfa07.ctex"]
 
 [params]
 

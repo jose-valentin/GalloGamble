@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgetqwegif8qd"]
+[gd_scene load_steps=12 format=3 uid="uid://cgetqwegif8qd"]
 
 [ext_resource type="Script" uid="uid://b70onkiuuyyk6" path="res://Arena.gd" id="1_uj4qe"]
 [ext_resource type="PhysicsMaterial" uid="uid://yycae7cwwn71" path="res://RoostersArena.tres" id="3_uj4qe"]
-[ext_resource type="Texture2D" uid="uid://cpniejpdupg4e" path="res://images-removebg-preview.png" id="3_vbyki"]
-[ext_resource type="Texture2D" uid="uid://tdkv1xvakfnf" path="res://Tiling-Grass-Texture-Banner.jpg" id="4_8qske"]
+[ext_resource type="Texture2D" uid="uid://tdkv1xvakfnf" path="res://art/Tiling-Grass-Texture-Banner.jpg" id="4_8qske"]
+[ext_resource type="Texture2D" uid="uid://b65dthird6q1y" path="res://art/rooster_blue.png" id="4_jycnn"]
+[ext_resource type="Texture2D" uid="uid://dmn7sw7i38tcm" path="res://art/rooster_red.png" id="5_ml6qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4qe"]
 
@@ -13,6 +14,7 @@ bounce = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml6qp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj4qe"]
+radius = 10.2402
 
 [sub_resource type="LabelSettings" id="LabelSettings_uj4qe"]
 font_size = 110
@@ -128,10 +130,12 @@ scale = Vector2(1.6, 1.6)
 physics_material_override = ExtResource("3_uj4qe")
 
 [node name="Sprite2D" type="Sprite2D" parent="RoosterA"]
-scale = Vector2(0.11, 0.145)
-texture = ExtResource("3_vbyki")
+position = Vector2(0.000204816, 0.000153612)
+scale = Vector2(0.55, 0.5)
+texture = ExtResource("4_jycnn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterA"]
+position = Vector2(-0.838721, 0.000153612)
 scale = Vector2(1.43, 1.43)
 shape = SubResource("CircleShape2D_uj4qe")
 
@@ -141,11 +145,11 @@ scale = Vector2(1.13, 1.13)
 physics_material_override = ExtResource("3_uj4qe")
 
 [node name="Sprite2D" type="Sprite2D" parent="RoosterB"]
-self_modulate = Color(100, 0, 0, 1)
-scale = Vector2(0.19, 0.14)
-texture = ExtResource("3_vbyki")
+scale = Vector2(0.679, 0.5)
+texture = ExtResource("5_ml6qp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterB"]
+position = Vector2(-1.18772, -0.00030813)
 scale = Vector2(1.74, 1.645)
 shape = SubResource("CircleShape2D_uj4qe")
 

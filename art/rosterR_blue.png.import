@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmyi6da1curq5"
-path="res://.godot/imported/a97743bfab2839b35c5a91f670342691-removebg-preview.png-f12652699c10f0888d0a4e5ef5574711.ctex"
+uid="uid://fbn17dspi28u"
+path="res://.godot/imported/rosterR_blue.png-2aa708267d9b79d19819813ba750eb09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://a97743bfab2839b35c5a91f670342691-removebg-preview.png"
-dest_files=["res://.godot/imported/a97743bfab2839b35c5a91f670342691-removebg-preview.png-f12652699c10f0888d0a4e5ef5574711.ctex"]
+source_file="res://art/rosterR_blue.png"
+dest_files=["res://.godot/imported/rosterR_blue.png-2aa708267d9b79d19819813ba750eb09.ctex"]
 
 [params]
 
