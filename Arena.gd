@@ -10,6 +10,12 @@ var winCheck = false
 
 
 func _ready():
+	# Optional but helps enforce stillness
+	rooster_a.linear_velocity = Vector2.ZERO
+	rooster_a.angular_velocity = 0.0
+	rooster_b.linear_velocity = Vector2.ZERO
+	rooster_b.angular_velocity = 0.0
+
 	# Initially disable movement
 	rooster_a.gravity_scale = 0
 	rooster_b.gravity_scale = 0
