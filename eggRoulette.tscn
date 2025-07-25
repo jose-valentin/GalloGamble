@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnhaje2p7fpq"]
+
+[ext_resource type="Script" uid="uid://dyl2th6r218g5" path="res://roulette_wheel.gd" id="2_s4klb"]
+[ext_resource type="Texture2D" uid="uid://b8u5onmcl1r6x" path="res://rulette.png" id="2_srxmt"]
+
+[node name="Node2D" type="Sprite2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+anchors_preset = -1
+anchor_top = -0.300578
+anchor_bottom = -0.300578
+offset_left = 55.0
+offset_top = 30.3006
+offset_right = 567.669
+offset_bottom = 544.0
+scale = Vector2(1.36, 1.36)
+metadata/_edit_use_anchors_ = true
+
+[node name="RouletteWheel" type="Sprite2D" parent="."]
+position = Vector2(405, 364)
+scale = Vector2(1.36, 1.36)
+texture = ExtResource("2_srxmt")
+offset = Vector2(0.2, 19.495)
+script = ExtResource("2_s4klb")
+
+[node name="ball" type="Sprite2D" parent="."]
+
+[node name="spinButton" type="Button" parent="."]
+offset_left = 587.0
+offset_top = 583.0
+offset_right = 708.0
+offset_bottom = 657.0
+
+[node name="resultLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="spinButton" to="." method="start_spin"]
+[connection signal="pressed" from="spinButton" to="RouletteWheel" method="_on_SpinButton_pressed"]

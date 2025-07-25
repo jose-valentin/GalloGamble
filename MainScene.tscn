@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3oxhpt6cstl6"]
+[gd_scene load_steps=7 format=3 uid="uid://d3oxhpt6cstl6"]
 
 [ext_resource type="Script" uid="uid://o2fobt62lq6p" path="res://button.gd" id="1_3mqji"]
+[ext_resource type="Shader" uid="uid://bour0ir0wfvpl" path="res://MainScene.gdshader" id="1_uxrcv"]
 [ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://art/Gallo-PNG-Pic.png" id="2_rpqi1"]
 [ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://art/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="3_rpqi1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rf2cd"]
+shader = ExtResource("1_uxrcv")
+shader_parameter/steps = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_a814b"]
+font_size = 51
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(74, 67)
 
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rf2cd")
 offset_left = 2.0
 offset_top = -10.0
 offset_right = 389.0
@@ -16,15 +25,16 @@ color = Color(0.753171, 0.503057, 9.62615e-07, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 145.0
-offset_top = 53.0
-offset_right = 257.0
-offset_bottom = 76.0
+offset_left = 54.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 78.0
 scale = Vector2(0.876439, 1.13759)
 text = "Gallo Gamble"
+label_settings = SubResource("LabelSettings_a814b")
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="."]
+[node name="coinFlipFight" type="Button" parent="."]
 offset_left = 94.0
 offset_top = 93.0
 offset_right = 298.0
@@ -50,16 +60,24 @@ offset_right = 284.0
 offset_bottom = 212.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 96.0
-offset_top = 166.0
-offset_right = 298.0
-offset_bottom = 230.0
+[node name="arenaFight" type="Button" parent="."]
+offset_left = 97.0
+offset_top = 162.0
+offset_right = 299.0
+offset_bottom = 226.0
 text = "Arena Fight"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="Button" method="_on_Button2_pressed"]
+[node name="eggRoulette" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 237.0
+offset_right = 300.0
+offset_bottom = 290.0
+text = "Egg Roulette"
+
+[connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_button_pressed"]
+[connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_pressed"]
+[connection signal="pressed" from="arenaFight" to="coinFlipFight" method="_on_Button2_pressed"]
+[connection signal="pressed" from="eggRoulette" to="coinFlipFight" method="_on_Button3_pressed"]
