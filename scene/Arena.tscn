@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgetqwegif8qd"]
+
+[ext_resource type="Script" uid="uid://b70onkiuuyyk6" path="res://scripts/Arena.gd" id="1_jgjd0"]
+[ext_resource type="Texture2D" uid="uid://tdkv1xvakfnf" path="res://artwork/Tiling-Grass-Texture-Banner.jpg" id="2_unr52"]
+[ext_resource type="PhysicsMaterial" uid="uid://yycae7cwwn71" path="res://RoostersArena.tres" id="3_7v4x1"]
+[ext_resource type="Texture2D" uid="uid://b65dthird6q1y" path="res://artwork/rooster_blue.png" id="4_7wqgo"]
+[ext_resource type="Texture2D" uid="uid://dmn7sw7i38tcm" path="res://artwork/rooster_red.png" id="5_mj5nl"]
+[ext_resource type="PackedScene" uid="uid://csgq43v205knd" path="res://scene/wall.tscn" id="6_unr52"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj4qe"]
+radius = 10.2402
+
+[sub_resource type="LabelSettings" id="LabelSettings_unr52"]
+font_size = 36
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jycnn"]
+radius = 8.94045
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(222, 81)
+scale = Vector2(0.745, 0.745)
+script = ExtResource("1_jgjd0")
+
+[node name="Terrain" type="Sprite2D" parent="."]
+position = Vector2(-36.2416, 236.242)
+rotation = 1.57576
+scale = Vector2(0.462607, 0.783158)
+texture = ExtResource("2_unr52")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.832
+offset_top = 200.0
+offset_right = 130.168
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.745, 0.745)
+text = "DUEL!"
+metadata/_edit_use_anchors_ = true
+
+[node name="RoosterA" type="RigidBody2D" parent="."]
+position = Vector2(-204.027, 491.275)
+scale = Vector2(1.6, 1.6)
+physics_material_override = ExtResource("3_7v4x1")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RoosterA"]
+position = Vector2(0.838919, 2.57492e-05)
+scale = Vector2(0.55, 0.5)
+texture = ExtResource("4_7wqgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterA"]
+position = Vector2(-7.62939e-06, 2.5928e-05)
+scale = Vector2(1.43, 1.43)
+shape = SubResource("CircleShape2D_uj4qe")
+
+[node name="RoosterB" type="RigidBody2D" parent="."]
+position = Vector2(326.174, 127.517)
+scale = Vector2(1.13, 1.13)
+physics_material_override = ExtResource("3_7v4x1")
+
+[node name="Sprite2D" type="Sprite2D" parent="RoosterB"]
+position = Vector2(-201.936, -124.725)
+scale = Vector2(0.679, 0.5)
+texture = ExtResource("5_mj5nl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterB"]
+position = Vector2(-203.124, -124.725)
+scale = Vector2(1.74, 1.645)
+shape = SubResource("CircleShape2D_uj4qe")
+
+[node name="ResultLabel" type="Label" parent="."]
+z_index = 10
+offset_left = -236.242
+offset_top = 304.698
+offset_right = 63.7584
+offset_bottom = 504.698
+scale = Vector2(0.745, 0.745)
+label_settings = SubResource("LabelSettings_unr52")
+horizontal_alignment = 1
+
+[node name="GravityZone" type="Area2D" parent="."]
+position = Vector2(-36.2416, 251.007)
+scale = Vector2(4.815, 4.815)
+gravity_space_override = 3
+gravity_point = true
+gravity = 104.237
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
+position = Vector2(0.836313, 0.278772)
+scale = Vector2(5.675, 5.675)
+shape = SubResource("CircleShape2D_jycnn")
+
+[node name="WinnerStopTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlayAgainButton" type="Button" parent="."]
+visible = false
+offset_left = 220.134
+offset_top = 428.188
+offset_right = 466.134
+offset_bottom = 480.188
+text = "Main Menu"
+
+[node name="Wall" parent="." instance=ExtResource("6_unr52")]
+position = Vector2(-295.302, -103.356)
+
+[node name="Wall2" parent="." instance=ExtResource("6_unr52")]
+position = Vector2(440.268, -106.04)
+
+[node name="Wall3" parent="." instance=ExtResource("6_unr52")]
+position = Vector2(-287.248, -324.832)
+rotation = -1.55991
+
+[node name="Wall4" parent="." instance=ExtResource("6_unr52")]
+position = Vector2(-292.617, 587.919)
+rotation = -1.5743
+
+[node name="Wall5" parent="." instance=ExtResource("6_unr52")]
+position = Vector2(-296.644, 414.765)
+
+[node name="Wall6" parent="." instance=ExtResource("6_unr52")]
+position = Vector2(438.926, 412.081)
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]

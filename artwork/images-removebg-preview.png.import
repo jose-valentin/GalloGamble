@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ugrrt2bhev5"
-path="res://.godot/imported/Gallo-PNG-Pic.png-404d327657303d0ed86123ba33963840.ctex"
+uid="uid://cpniejpdupg4e"
+path="res://.godot/imported/images-removebg-preview.png-eb981f0552d26e99bca6a5fa4ea8def2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Gallo-PNG-Pic.png"
-dest_files=["res://.godot/imported/Gallo-PNG-Pic.png-404d327657303d0ed86123ba33963840.ctex"]
+source_file="res://artwork/images-removebg-preview.png"
+dest_files=["res://.godot/imported/images-removebg-preview.png-eb981f0552d26e99bca6a5fa4ea8def2.ctex"]
 
 [params]
 

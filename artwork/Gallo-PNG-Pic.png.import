@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fbn17dspi28u"
-path="res://.godot/imported/rosterR_blue.png-2aa708267d9b79d19819813ba750eb09.ctex"
+uid="uid://b8ugrrt2bhev5"
+path="res://.godot/imported/Gallo-PNG-Pic.png-953356f3b79b065fdda9686f6f84a96e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/rosterR_blue.png"
-dest_files=["res://.godot/imported/rosterR_blue.png-2aa708267d9b79d19819813ba750eb09.ctex"]
+source_file="res://artwork/Gallo-PNG-Pic.png"
+dest_files=["res://.godot/imported/Gallo-PNG-Pic.png-953356f3b79b065fdda9686f6f84a96e.ctex"]
 
 [params]
 

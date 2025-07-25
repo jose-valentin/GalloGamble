@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hflnv87oc4nq"
-path="res://.godot/imported/images.jpg-48e7c27217191c14f07845a618627681.ctex"
+uid="uid://tdkv1xvakfnf"
+path="res://.godot/imported/Tiling-Grass-Texture-Banner.jpg-02a6142bd386b95ebedae3bb5173b7ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/images.jpg"
-dest_files=["res://.godot/imported/images.jpg-48e7c27217191c14f07845a618627681.ctex"]
+source_file="res://artwork/Tiling-Grass-Texture-Banner.jpg"
+dest_files=["res://.godot/imported/Tiling-Grass-Texture-Banner.jpg-02a6142bd386b95ebedae3bb5173b7ae.ctex"]
 
 [params]
 

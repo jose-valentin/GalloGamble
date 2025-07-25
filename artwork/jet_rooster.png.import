@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tdkv1xvakfnf"
-path="res://.godot/imported/Tiling-Grass-Texture-Banner.jpg-dcd0b0293aa2e14608fe8b6812153083.ctex"
+uid="uid://d4lrstk28la6l"
+path="res://.godot/imported/jet_rooster.png-410857b67b4e30caa1a7fddb032a0c27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Tiling-Grass-Texture-Banner.jpg"
-dest_files=["res://.godot/imported/Tiling-Grass-Texture-Banner.jpg-dcd0b0293aa2e14608fe8b6812153083.ctex"]
+source_file="res://artwork/jet_rooster.png"
+dest_files=["res://.godot/imported/jet_rooster.png-410857b67b4e30caa1a7fddb032a0c27.ctex"]
 
 [params]
 

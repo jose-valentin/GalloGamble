@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://csgq43v205knd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5nqj"]
+size = Vector2(19.4315, 48.3815)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_80ewm"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3h2xa"]
+size = Vector2(20, 48.0964)
+
+[node name="Wall" type="Node2D"]
+
+[node name="detector" type="Area2D" parent="."]
+scale = Vector2(3.28, 3.28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+position = Vector2(-33.2317, 78.5812)
+scale = Vector2(3.28, 3.28)
+shape = SubResource("RectangleShape2D_r5nqj")
+
+[node name="bouncer" type="StaticBody2D" parent="."]
+scale = Vector2(3.28, 3.28)
+physics_material_override = SubResource("PhysicsMaterial_80ewm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bouncer"]
+position = Vector2(-32.3171, 79.0488)
+scale = Vector2(3.28, 3.28)
+shape = SubResource("RectangleShape2D_3h2xa")
+one_way_collision_margin = 0.0

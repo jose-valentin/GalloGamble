@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://b461mwdlkvram"]
 
-[ext_resource type="Script" uid="uid://dwbxkgsbknivq" path="res://BattleScene.gd" id="1_hvnqj"]
-[ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://art/Gallo-PNG-Pic.png" id="2_musxc"]
-[ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://art/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="3_hvnqj"]
+[ext_resource type="Script" uid="uid://dwbxkgsbknivq" path="res://scripts/BattleScene.gd" id="1_hvnqj"]
+[ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://artwork/Gallo-PNG-Pic.png" id="2_musxc"]
+[ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://artwork/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="3_hvnqj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hvnqj"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(343, 222)
+position = Vector2(186, 222)
 script = ExtResource("1_hvnqj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -36,6 +36,7 @@ offset_right = 49.0
 offset_bottom = -71.0
 horizontal_alignment = 1
 autowrap_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BetA" type="Button" parent="."]
 offset_left = -161.0

@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3oxhpt6cstl6"]
 
-[ext_resource type="Script" uid="uid://o2fobt62lq6p" path="res://button.gd" id="1_3mqji"]
-[ext_resource type="Shader" uid="uid://bour0ir0wfvpl" path="res://MainScene.gdshader" id="1_uxrcv"]
-[ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://art/Gallo-PNG-Pic.png" id="2_rpqi1"]
-[ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://art/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="3_rpqi1"]
+[ext_resource type="Shader" path="res://MainScene.gdshader" id="1_vbi7m"]
+[ext_resource type="Script" uid="uid://o2fobt62lq6p" path="res://scripts/button.gd" id="2_hip4p"]
+[ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://artwork/Gallo-PNG-Pic.png" id="3_mbb2f"]
+[ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://artwork/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="4_tq7j2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rf2cd"]
-shader = ExtResource("1_uxrcv")
+shader = ExtResource("1_vbi7m")
 shader_parameter/steps = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_a814b"]
@@ -17,64 +17,55 @@ position = Vector2(74, 67)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_rf2cd")
-offset_left = 2.0
-offset_top = -10.0
-offset_right = 389.0
-offset_bottom = 507.0
+offset_left = -73.0
+offset_top = -67.0
+offset_right = 314.0
+offset_bottom = 450.0
 color = Color(0.753171, 0.503057, 9.62615e-07, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 54.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 78.0
+offset_left = -21.0
+offset_top = -29.0
+offset_right = 309.0
+offset_bottom = 41.0
 scale = Vector2(0.876439, 1.13759)
 text = "Gallo Gamble"
 label_settings = SubResource("LabelSettings_a814b")
 metadata/_edit_use_anchors_ = true
 
 [node name="coinFlipFight" type="Button" parent="."]
-offset_left = 94.0
-offset_top = 93.0
-offset_right = 298.0
-offset_bottom = 152.0
+offset_left = 27.0
+offset_top = 74.0
+offset_right = 230.0
+offset_bottom = 133.0
 text = "Coin flip Fight"
-script = ExtResource("1_3mqji")
-metadata/_edit_use_anchors_ = true
+script = ExtResource("2_hip4p")
 
 [node name="roosterA" type="Sprite2D" parent="."]
-position = Vector2(118.141, 365.578)
+position = Vector2(26, 358)
 scale = Vector2(0.527438, 0.479378)
-texture = ExtResource("2_rpqi1")
+texture = ExtResource("3_mbb2f")
 
 [node name="roosterB" type="Sprite2D" parent="."]
-position = Vector2(330, 372)
+position = Vector2(231, 372)
 scale = Vector2(0.681896, 0.591629)
-texture = ExtResource("3_rpqi1")
-
-[node name="ResultLabel" type="Label" parent="."]
-offset_left = 118.0
-offset_top = 169.0
-offset_right = 284.0
-offset_bottom = 212.0
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("4_tq7j2")
 
 [node name="arenaFight" type="Button" parent="."]
-offset_left = 97.0
-offset_top = 162.0
-offset_right = 299.0
-offset_bottom = 226.0
+offset_left = 28.0
+offset_top = 140.0
+offset_right = 230.0
+offset_bottom = 204.0
 text = "Arena Fight"
-metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="eggRoulette" type="Button" parent="."]
-offset_left = 99.0
-offset_top = 237.0
-offset_right = 300.0
-offset_bottom = 290.0
+offset_left = 28.0
+offset_top = 211.0
+offset_right = 230.0
+offset_bottom = 266.0
 text = "Egg Roulette"
 
 [connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_button_pressed"]

@@ -53,4 +53,4 @@ func animate_rooster(attacker: Node2D, target: Node2D):
 		await get_tree().create_timer(delay).timeout
 
 func _on_BackButton_pressed():
-	get_tree().change_scene_to_file("res://MainScene.tscn")
+	get_tree().change_scene_to_file("res://scene/MainScene.tscn")

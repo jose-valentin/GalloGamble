@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4lrstk28la6l"
-path="res://.godot/imported/jet_rooster.png-90fdaa13b14cee8aa444bcf188ebe9c8.ctex"
+uid="uid://b65dthird6q1y"
+path="res://.godot/imported/rooster_blue.png-39840530f290a199efe25509af43002a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/jet_rooster.png"
-dest_files=["res://.godot/imported/jet_rooster.png-90fdaa13b14cee8aa444bcf188ebe9c8.ctex"]
+source_file="res://artwork/rooster_blue.png"
+dest_files=["res://.godot/imported/rooster_blue.png-39840530f290a199efe25509af43002a.ctex"]
 
 [params]
 
