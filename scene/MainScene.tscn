@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3oxhpt6cstl6"]
 
-[ext_resource type="Shader" path="res://MainScene.gdshader" id="1_vbi7m"]
+[ext_resource type="Shader" uid="uid://bour0ir0wfvpl" path="res://MainScene.gdshader" id="1_vbi7m"]
 [ext_resource type="Script" uid="uid://o2fobt62lq6p" path="res://scripts/button.gd" id="2_hip4p"]
 [ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://artwork/Gallo-PNG-Pic.png" id="3_mbb2f"]
 [ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://artwork/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="4_tq7j2"]
@@ -68,7 +68,7 @@ offset_right = 230.0
 offset_bottom = 266.0
 text = "Egg Roulette"
 
-[connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_button_pressed"]
 [connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_pressed"]
+[connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_button_pressed"]
 [connection signal="pressed" from="arenaFight" to="coinFlipFight" method="_on_Button2_pressed"]
 [connection signal="pressed" from="eggRoulette" to="coinFlipFight" method="_on_Button3_pressed"]

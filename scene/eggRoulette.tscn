@@ -1,40 +1,382 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqnhaje2p7fpq"]
+[gd_scene load_steps=14 format=3 uid="uid://cqnhaje2p7fpq"]
 
-[ext_resource type="Script" uid="uid://dyl2th6r218g5" path="res://scripts/roulette_wheel.gd" id="2_s4klb"]
+[ext_resource type="Script" uid="uid://bmjjqltnek1xl" path="res://scripts/roulette.gd" id="2_oo5n5"]
+[ext_resource type="Shader" uid="uid://cte47vl5uj7se" path="res://scene/eggRoulette.gdshader" id="2_rs83y"]
 [ext_resource type="Texture2D" uid="uid://b8u5onmcl1r6x" path="res://artwork/rulette.png" id="2_srxmt"]
+[ext_resource type="Texture2D" uid="uid://cpniejpdupg4e" path="res://artwork/images-removebg-preview.png" id="3_5t2a3"]
+[ext_resource type="PackedScene" uid="uid://csgq43v205knd" path="res://scene/wall.tscn" id="3_m6hnn"]
+[ext_resource type="PackedScene" uid="uid://bsjgiq3qjlln8" path="res://scene/round_wall.tscn" id="3_reb0q"]
+[ext_resource type="Script" uid="uid://b63sx54k3o6oj" path="res://scripts/cirlceWallCreator.gd" id="4_ixt7x"]
+[ext_resource type="PackedScene" uid="uid://c00eryvr86o5b" path="res://scene/egg.tscn" id="4_lxc7o"]
+[ext_resource type="Script" uid="uid://b1jg7ecdo7p8r" path="res://scripts/Egg.gd" id="5_lxc7o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uk48a"]
+shader = ExtResource("2_rs83y")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo5n5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ixt7x"]
+rough = true
+bounce = 0.11
+
+[sub_resource type="LabelSettings" id="LabelSettings_nldu6"]
+font_size = 51
+shadow_size = 21
+shadow_color = Color(0.262745, 0.262745, 0.262745, 1)
 
 [node name="Node2D" type="Sprite2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.952941, 0.32549, 0.2, 1)
 show_behind_parent = true
 anchors_preset = -1
-anchor_top = -0.300578
-anchor_bottom = -0.300578
-offset_left = 55.0
-offset_top = 30.3006
-offset_right = 567.669
-offset_bottom = 544.0
-scale = Vector2(1.36, 1.36)
+anchor_left = -238.814
+anchor_top = -258.44
+anchor_right = -238.814
+anchor_bottom = -258.44
+offset_left = 15.855
+offset_top = 3.74057
+offset_right = 525.814
+offset_bottom = 517.44
+scale = Vector2(1.36, 1.9414)
 metadata/_edit_use_anchors_ = true
 
+[node name="whiteBackgroundwheel" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uk48a")
+position = Vector2(195.5, 244.5)
+scale = Vector2(1.44444, 1.45333)
+texture = ExtResource("3_5t2a3")
+
 [node name="RouletteWheel" type="Sprite2D" parent="."]
-position = Vector2(405, 364)
-scale = Vector2(1.36, 1.36)
+position = Vector2(195, 244)
+scale = Vector2(0.805, 0.805)
 texture = ExtResource("2_srxmt")
 offset = Vector2(0.2, 19.495)
-script = ExtResource("2_s4klb")
+script = ExtResource("2_oo5n5")
 
-[node name="ball" type="Sprite2D" parent="."]
+[node name="numbdetector0" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector0"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector1" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-73.2919, 77.0187)
+rotation = 0.781543
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector1"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector2" type="Area2D" parent="RouletteWheel"]
+position = Vector2(89.441, -54.6584)
+rotation = 1.03497
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector2"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector3" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-34.7826, -99.3789)
+rotation = -0.355
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector3"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector4" type="Area2D" parent="RouletteWheel"]
+position = Vector2(65.8385, -81.9876)
+rotation = 0.690166
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector4"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector5" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-8.69565, 104.348)
+rotation = 0.162806
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector5"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector6" type="Area2D" parent="RouletteWheel"]
+position = Vector2(98.1366, 13.6646)
+rotation = 0.153012
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector6"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector7" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-88.1988, -53.4161)
+rotation = 0.535793
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector7"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector8" type="Area2D" parent="RouletteWheel"]
+position = Vector2(42.236, 94.41)
+rotation = -0.462412
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector8"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector9" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-104.348, 12.4224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector9"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector10" type="Area2D" parent="RouletteWheel"]
+position = Vector2(7.45342, 104.348)
+rotation = -0.129523
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector10"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector11" type="Area2D" parent="RouletteWheel"]
+position = Vector2(70.8074, 73.2919)
+rotation = -0.749086
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector11"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector12" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector12"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector13" type="Area2D" parent="RouletteWheel"]
+position = Vector2(93.1677, 45.9627)
+rotation = -1.07311
+scale = Vector2(0.870802, 0.919982)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector13"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector14" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-88.1988, 43.4781)
+rotation = -0.565037
+scale = Vector2(0.944047, 0.84127)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector14"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector15" type="Area2D" parent="RouletteWheel"]
+position = Vector2(33.5404, -96.8946)
+rotation = 0.51005
+scale = Vector2(0.919129, 0.831588)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector15"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector16" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-40.9938, 91.9255)
+rotation = 0.444574
+scale = Vector2(0.949227, 0.901509)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector16"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector17" type="Area2D" parent="RouletteWheel"]
+position = Vector2(103.106, -21.118)
+rotation = -0.250239
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector17"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector18" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-98.1366, -21.1183)
+rotation = 0.194752
+scale = Vector2(0.837289, 0.844893)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector18"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector19" type="Area2D" parent="RouletteWheel"]
+position = Vector2(49.6894, -89.441)
+rotation = 0.482284
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector19"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector20" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-81.9876, 60.8696)
+rotation = -0.714922
+scale = Vector2(0.716734, 0.814454)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector20"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector21" type="Area2D" parent="RouletteWheel"]
+position = Vector2(75.7764, -68.3232)
+rotation = -0.75266
+scale = Vector2(0.768259, 0.876167)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector21"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector22" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-103.106, -7.4536)
+scale = Vector2(1.04825, 0.816069)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector22"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector23" type="Area2D" parent="RouletteWheel"]
+position = Vector2(26.0869, 100.621)
+rotation = -0.254305
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector23"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector24" type="Area2D" parent="RouletteWheel"]
+position = Vector2(-26.087, 98.1364)
+rotation = 0.290359
+scale = Vector2(0.621131, 0.771262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector24"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector25" type="Area2D" parent="RouletteWheel"]
+position = Vector2(96.8944, -38.5095)
+rotation = -0.334468
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector25"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector26" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector26"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector27" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector27"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector28" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector28"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector29" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector29"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector30" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector30"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector31" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector31"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector32" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector32"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector33" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector33"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector34" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector34"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector35" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector35"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector36" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector36"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="numbdetector37" type="Area2D" parent="RouletteWheel"]
+position = Vector2(1.24223, -104.348)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector37"]
+shape = SubResource("RectangleShape2D_oo5n5")
+
+[node name="Wall" parent="RouletteWheel" instance=ExtResource("3_m6hnn")]
+position = Vector2(64.5963, 42.236)
+rotation = -0.959222
+scale = Vector2(-0.136638, 0.0895484)
+
+[node name="roundWall" parent="RouletteWheel" instance=ExtResource("3_reb0q")]
+position = Vector2(-2.48447, -2.48444)
+scale = Vector2(1.24224, 1.24224)
+script = ExtResource("4_ixt7x")
 
 [node name="spinButton" type="Button" parent="."]
-offset_left = 587.0
-offset_top = 583.0
-offset_right = 708.0
-offset_bottom = 657.0
+offset_left = 229.0
+offset_top = 423.0
+offset_right = 350.0
+offset_bottom = 497.0
+text = "R O T A T E"
 
 [node name="resultLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 279.0
+offset_top = 239.0
+offset_right = 319.0
+offset_bottom = 262.0
 
+[node name="Egg" parent="." instance=ExtResource("4_lxc7o")]
+position = Vector2(212, 239)
+physics_material_override = SubResource("PhysicsMaterial_ixt7x")
+script = ExtResource("5_lxc7o")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 10.0
+offset_right = 374.0
+offset_bottom = 87.0
+text = "Egg Roulette"
+label_settings = SubResource("LabelSettings_nldu6")
+
+[connection signal="body_entered" from="RouletteWheel/numbdetector0" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector1" to="RouletteWheel" method="_on_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector2" to="RouletteWheel" method="_on_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector12" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector13" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector14" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector15" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector16" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector17" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector18" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector19" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector20" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector21" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector22" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector23" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector24" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector25" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector26" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector27" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector28" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector29" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector30" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector31" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector32" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector33" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector34" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector35" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector36" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
+[connection signal="body_entered" from="RouletteWheel/numbdetector37" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
 [connection signal="pressed" from="spinButton" to="." method="start_spin"]
 [connection signal="pressed" from="spinButton" to="RouletteWheel" method="_on_SpinButton_pressed"]

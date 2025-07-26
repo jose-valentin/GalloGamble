@@ -22,21 +22,24 @@ func _ready():
 	rooster_a.sleeping = true
 	rooster_b.sleeping = true
 
-	# Get Terrain's position and size
-	var tex_size = terrain.texture.get_size() * terrain.scale
-	var top_left = terrain.global_position - (tex_size / 2)
+	# Improved spawn position calculation
+	var sprite = terrain as Sprite2D
+	var size = sprite.texture.get_size() * sprite.scale
+	var top_left = sprite.global_position - size / 2
+	var bottom_right = sprite.global_position + size / 2
 	var margin = 50
+	var center_x = (top_left.x + bottom_right.x) / 2
 
 	# Rooster A on left half
 	rooster_a.global_position = Vector2(
-		randf_range(top_left.x + margin, top_left.x + tex_size.x / 2 - margin),
-		randf_range(top_left.y + margin, top_left.y + tex_size.y - margin)
+		randf_range(top_left.x + margin, center_x - margin),
+		randf_range(top_left.y + margin, bottom_right.y - margin)
 	)
 
 	# Rooster B on right half
 	rooster_b.global_position = Vector2(
-		randf_range(top_left.x + tex_size.x / 2 + margin, top_left.x + tex_size.x - margin),
-		randf_range(top_left.y + margin, top_left.y + tex_size.y - margin)
+		randf_range(center_x + margin, bottom_right.x - margin),
+		randf_range(top_left.y + margin, bottom_right.y - margin)
 	)
 
 	start_button.pressed.connect(_on_StartButton_pressed)
@@ -81,8 +84,6 @@ func _physics_process(delta):
 		rooster_a.angular_velocity = max_angular_velocityA
 		rooster_b.angular_velocity = -max_angular_velocityB
 
-
-
 	var angular_damp_factor = 0.0599
 
 	# Dampen angular velocity a bit each frame
@@ -98,11 +99,6 @@ func _physics_process(delta):
 			rooster.angular_velocity = max_angular_velocityA
 		elif rooster.angular_velocity < -max_angular_velocityB:
 			rooster.angular_velocity = -max_angular_velocityB
-
-
-	# Slowly reduce angular velocity
-	#rooster_a.angular_velocity -= 1
-	#rooster_b.angular_velocity -= 1
 
 	if start_button.disabled:
 		fight_timer += delta
@@ -121,23 +117,12 @@ func _physics_process(delta):
 	
 	if dist < 30:
 		print(dist)
-#		var push_dir = (rooster_a.global_position - rooster_b.global_position).normalized()
-#		var bounce_force = rooster_a.linear_velocity + rooster_b.linear_velocity
-#		rooster_a.apply_central_impulse(push_dir * bounce_force)
-#		rooster_b.apply_central_impulse(-push_dir * bounce_force)
-
-	# Apply random angular velocity changes (damping or boosting)
 		var ang_adjust_a = randf_range(-1, 30)  # mostly dampens spin
 		max_angular_velocityA -= ang_adjust_a
 		check_if_stopped()
 		var ang_adjust_b = randf_range(-1, 30)  # mostly dampens spin
 		max_angular_velocityB -= ang_adjust_b
 		check_if_stopped()
-
-	# Add spin (reduced amount)
-#	var spin_boost = 1
-##	rooster_a.angular_velocity += spin_boost
-#	rooster_b.angular_velocity -= spin_boost
 
 func check_if_stopped():
 	if winCheck == true: $PlayAgainButton.show()
@@ -178,8 +163,6 @@ func check_if_stopped():
 		rooster_b.linear_velocity = Vector2.ZERO
 		rooster_b.angular_velocity = 0.0
 		$WinnerStopTimer.start()
-		#test
-
 
 func _on_WinnerStopTimer_timeout():
 	if winner == "a":
@@ -189,7 +172,6 @@ func _on_WinnerStopTimer_timeout():
 		rooster_b.linear_velocity = Vector2.ZERO
 		rooster_b.angular_velocity = 0.0
 	$PlayAgainButton.show()
-
 
 func _on_PlayAgainButton_pressed():
 	get_tree().change_scene_to_file("res://MainScene.tscn")

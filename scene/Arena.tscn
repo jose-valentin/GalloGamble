@@ -45,7 +45,7 @@ text = "DUEL!"
 metadata/_edit_use_anchors_ = true
 
 [node name="RoosterA" type="RigidBody2D" parent="."]
-position = Vector2(-204.027, 491.275)
+position = Vector2(-165.101, 246.98)
 scale = Vector2(1.6, 1.6)
 physics_material_override = ExtResource("3_7v4x1")
 metadata/_edit_group_ = true
@@ -57,13 +57,14 @@ texture = ExtResource("4_7wqgo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterA"]
 position = Vector2(-7.62939e-06, 2.5928e-05)
-scale = Vector2(1.43, 1.43)
+scale = Vector2(1.7, 1.6)
 shape = SubResource("CircleShape2D_uj4qe")
 
 [node name="RoosterB" type="RigidBody2D" parent="."]
-position = Vector2(326.174, 127.517)
-scale = Vector2(1.13, 1.13)
+position = Vector2(434.899, 436.242)
+scale = Vector2(1.6, 1.6)
 physics_material_override = ExtResource("3_7v4x1")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RoosterB"]
 position = Vector2(-201.936, -124.725)
@@ -72,7 +73,7 @@ texture = ExtResource("5_mj5nl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoosterB"]
 position = Vector2(-203.124, -124.725)
-scale = Vector2(1.74, 1.645)
+scale = Vector2(1.693, 1.6)
 shape = SubResource("CircleShape2D_uj4qe")
 
 [node name="ResultLabel" type="Label" parent="."]
@@ -86,10 +87,12 @@ label_settings = SubResource("LabelSettings_unr52")
 horizontal_alignment = 1
 
 [node name="GravityZone" type="Area2D" parent="."]
-position = Vector2(-36.2416, 251.007)
+position = Vector2(-36.2416, 216.107)
 scale = Vector2(4.815, 4.815)
 gravity_space_override = 3
 gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
 gravity = 104.237
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]

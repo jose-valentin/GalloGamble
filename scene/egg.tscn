@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c00eryvr86o5b"]
+
+[ext_resource type="Texture2D" uid="uid://ki5xd44lp7xk" path="res://artwork/image-removebg-preview.png" id="1_mnkgp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mnkgp"]
+
+[node name="Egg" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("1_mnkgp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(0, 3)
+scale = Vector2(0.735, 0.697)
+shape = SubResource("CircleShape2D_mnkgp")
