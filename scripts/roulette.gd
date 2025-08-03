@@ -1,4 +1,5 @@
 extends Sprite2D
+var overlapping_sensors := []
 
 @onready var egg = get_node("../Egg")
 @onready var wall = get_node("Wall")  # Change this to the actual path to the wall node
@@ -49,11 +50,36 @@ func move_wall_out():
 	#if wall:  start diggin in yo butt twin
 
 func _ready():
-	for i in range(37): #get the current nymber the egg is in twin 
+	for i in range(37):
 		var detector_name = "numbdetector" + str(i)
 		if has_node(detector_name):
 			var detector = get_node(detector_name)
 			detector.body_entered.connect(_on_detector_body_entered.bind(i))
+			detector.body_exited.connect(_on_detector_body_exited.bind(i))
 func _on_detector_body_entered(body: Node, index: int):
 	if body.name == "Egg":
-		print("🎯 Egg landed on number:", index)
+		if index not in overlapping_sensors:
+			overlapping_sensors.append(index)
+		_check_current_sensor()
+func _on_detector_body_exited(body: Node, index: int):
+	if body.name == "Egg":
+		if index in overlapping_sensors:
+			overlapping_sensors.erase(index)
+		_check_current_sensor()
+func _check_current_sensor():
+	if overlapping_sensors.size() == 0:
+		return
+
+	var egg_position = egg.global_position
+	var closest_index = -1
+	var closest_distance = INF
+
+	for index in overlapping_sensors:
+		var detector = get_node("numbdetector" + str(index))
+		var distance = egg_position.distance_to(detector.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_index = index
+
+	if closest_index != -1:
+		print("Egg is currently in sensor:", closest_index)

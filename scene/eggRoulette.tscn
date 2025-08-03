@@ -34,11 +34,11 @@ anchor_left = -238.814
 anchor_top = -258.44
 anchor_right = -238.814
 anchor_bottom = -258.44
-offset_left = 15.855
-offset_top = 3.74057
-offset_right = 525.814
-offset_bottom = 517.44
-scale = Vector2(1.36, 1.9414)
+offset_left = 237.814
+offset_top = 256.44
+offset_right = 747.773
+offset_bottom = 770.139
+scale = Vector2(0.770568, 1.02311)
 metadata/_edit_use_anchors_ = true
 
 [node name="whiteBackgroundwheel" type="Sprite2D" parent="."]
@@ -61,7 +61,7 @@ position = Vector2(1.24223, -104.348)
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector1" type="Area2D" parent="RouletteWheel"]
-position = Vector2(-73.2919, 77.0187)
+position = Vector2(-72.0497, 73.2919)
 rotation = 0.781543
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector1"]
@@ -75,7 +75,7 @@ rotation = 1.03497
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector3" type="Area2D" parent="RouletteWheel"]
-position = Vector2(-34.7826, -99.3789)
+position = Vector2(-33.5404, -98.1366)
 rotation = -0.355
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector3"]
@@ -96,7 +96,7 @@ rotation = 0.162806
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector6" type="Area2D" parent="RouletteWheel"]
-position = Vector2(98.1366, 13.6646)
+position = Vector2(101.863, 13.6646)
 rotation = 0.153012
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector6"]
@@ -137,7 +137,8 @@ rotation = -0.749086
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector12" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-64.5963, -78.2609)
+rotation = -0.75431
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector12"]
 shape = SubResource("RectangleShape2D_oo5n5")
@@ -151,7 +152,7 @@ scale = Vector2(0.870802, 0.919982)
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector14" type="Area2D" parent="RouletteWheel"]
-position = Vector2(-88.1988, 43.4781)
+position = Vector2(-91.9255, 43.4783)
 rotation = -0.565037
 scale = Vector2(0.944047, 0.84127)
 
@@ -197,7 +198,7 @@ rotation = 0.482284
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector20" type="Area2D" parent="RouletteWheel"]
-position = Vector2(-81.9876, 60.8696)
+position = Vector2(-80.7453, 57.1429)
 rotation = -0.714922
 scale = Vector2(0.716734, 0.814454)
 
@@ -242,73 +243,83 @@ rotation = -0.334468
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector26" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-18.6335, -103.106)
+rotation = -0.23799
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector26"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector27" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(95.6522, 32.2981)
+rotation = 0.2934
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector27"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector28" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-78.2609, -67.0807)
+rotation = -0.847651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector28"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector29" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-96.8944, -37.2671)
+rotation = 0.397587
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector29"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector30" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(58.3851, 84.472)
+rotation = -0.621854
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector30"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector31" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-99.3789, 31.0559)
+rotation = -0.517118
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector31"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector32" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(19.8758, -103.106)
+rotation = 0.150039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector32"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector33" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-57.1429, 83.2298)
+rotation = -0.972856
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector33"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector34" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(104.348, -3.72672)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector34"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector35" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-49.6894, -89.441)
+rotation = -0.532888
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector35"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector36" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(80.7453, 62.1118)
+rotation = 0.811376
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector36"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector37" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-5.96046e-06, -104.348)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector37"]
 shape = SubResource("RectangleShape2D_oo5n5")
@@ -338,6 +349,7 @@ offset_bottom = 262.0
 
 [node name="Egg" parent="." instance=ExtResource("4_lxc7o")]
 position = Vector2(212, 239)
+rotation = -0.0197505
 physics_material_override = SubResource("PhysicsMaterial_ixt7x")
 script = ExtResource("5_lxc7o")
 
