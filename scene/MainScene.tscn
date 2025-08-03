@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3oxhpt6cstl6"]
 
-[ext_resource type="Shader" uid="uid://bour0ir0wfvpl" path="res://MainScene.gdshader" id="1_vbi7m"]
+[ext_resource type="Shader" path="res://MainScene.gdshader" id="1_vbi7m"]
 [ext_resource type="Script" uid="uid://o2fobt62lq6p" path="res://scripts/button.gd" id="2_hip4p"]
 [ext_resource type="Texture2D" uid="uid://b8ugrrt2bhev5" path="res://artwork/Gallo-PNG-Pic.png" id="3_mbb2f"]
 [ext_resource type="Texture2D" uid="uid://cmyi6da1curq5" path="res://artwork/a97743bfab2839b35c5a91f670342691-removebg-preview.png" id="4_tq7j2"]
@@ -15,12 +15,14 @@ font_size = 51
 [node name="MainScene" type="Node2D"]
 position = Vector2(74, 67)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_rf2cd")
-offset_left = -73.0
-offset_top = -67.0
-offset_right = 314.0
-offset_bottom = 450.0
+offset_left = -71.0
+offset_top = -65.0
+offset_right = 316.0
+offset_bottom = 452.0
 color = Color(0.753171, 0.503057, 9.62615e-07, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -32,15 +34,9 @@ offset_bottom = 41.0
 scale = Vector2(0.876439, 1.13759)
 text = "Gallo Gamble"
 label_settings = SubResource("LabelSettings_a814b")
-metadata/_edit_use_anchors_ = true
-
-[node name="coinFlipFight" type="Button" parent="."]
-offset_left = 27.0
-offset_top = 74.0
-offset_right = 230.0
-offset_bottom = 133.0
-text = "Coin flip Fight"
-script = ExtResource("2_hip4p")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="roosterA" type="Sprite2D" parent="."]
 position = Vector2(26, 358)
@@ -52,23 +48,42 @@ position = Vector2(231, 372)
 scale = Vector2(0.681896, 0.591629)
 texture = ExtResource("4_tq7j2")
 
+[node name="coinFlipFight" type="Button" parent="."]
+offset_left = -47.0
+offset_top = 69.0
+offset_right = 115.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 20
+text = "Coin flip Fight"
+script = ExtResource("2_hip4p")
+
 [node name="arenaFight" type="Button" parent="."]
-offset_left = 28.0
-offset_top = 140.0
-offset_right = 230.0
-offset_bottom = 204.0
+offset_left = 126.0
+offset_top = 65.0
+offset_right = 289.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 20
 text = "Arena Fight"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="eggRoulette" type="Button" parent="."]
-offset_left = 28.0
-offset_top = 211.0
-offset_right = 230.0
-offset_bottom = 266.0
+offset_left = -47.0
+offset_top = 133.0
+offset_right = 115.0
+offset_bottom = 193.0
+theme_override_font_sizes/font_size = 20
 text = "Egg Roulette"
+
+[node name="chickenRoshambo" type="Button" parent="."]
+offset_left = 125.0
+offset_top = 130.0
+offset_right = 289.0
+offset_bottom = 194.0
+theme_override_font_sizes/font_size = 20
+text = "Chichen Roshambo"
+autowrap_mode = 2
 
 [connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_pressed"]
 [connection signal="pressed" from="coinFlipFight" to="coinFlipFight" method="_on_button_pressed"]
 [connection signal="pressed" from="arenaFight" to="coinFlipFight" method="_on_Button2_pressed"]
 [connection signal="pressed" from="eggRoulette" to="coinFlipFight" method="_on_Button3_pressed"]
+[connection signal="pressed" from="chickenRoshambo" to="coinFlipFight" method="_on_chicken_roshambo_pressed"]

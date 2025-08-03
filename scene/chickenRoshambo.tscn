@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crp12xhm1cv0y"]
+
+[ext_resource type="Script" uid="uid://dxptb4j4pwk44" path="res://scene/chickenroshambo.gd" id="1_rwgap"]
+[ext_resource type="PackedScene" uid="uid://umsgaslo03wk" path="res://scene/hud.tscn" id="2_btqfl"]
+
+[node name="chickenRoshambo" type="Node2D"]
+script = ExtResource("1_rwgap")
+
+[node name="HUD" parent="." instance=ExtResource("2_btqfl")]
+
+[connection signal="enemy_choice" from="HUD" to="." method="_on_hud_enemy_choice"]
+[connection signal="enemy_choice" from="HUD" to="HUD" method="_on_enemy_choice"]
+[connection signal="new_game" from="HUD" to="." method="_on_hud_new_game"]
+[connection signal="player_choice" from="HUD" to="." method="_on_hud_player_choice"]

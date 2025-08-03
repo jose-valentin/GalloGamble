@@ -105,32 +105,38 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PlayAgainButton" type="Button" parent="."]
-visible = false
-offset_left = 220.134
-offset_top = 428.188
-offset_right = 466.134
-offset_bottom = 480.188
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.846
+offset_top = 333.732
+offset_right = 96.1543
+offset_bottom = 385.732
+grow_horizontal = 2
+grow_vertical = 2
 text = "Main Menu"
 
 [node name="Wall" parent="." instance=ExtResource("6_unr52")]
 position = Vector2(-295.302, -103.356)
 
 [node name="Wall2" parent="." instance=ExtResource("6_unr52")]
-position = Vector2(440.268, -106.04)
+position = Vector2(438.926, -106.04)
 
 [node name="Wall3" parent="." instance=ExtResource("6_unr52")]
 position = Vector2(-287.248, -324.832)
 rotation = -1.55991
 
 [node name="Wall4" parent="." instance=ExtResource("6_unr52")]
-position = Vector2(-292.617, 587.919)
+position = Vector2(-292.617, 585.234)
 rotation = -1.5743
 
 [node name="Wall5" parent="." instance=ExtResource("6_unr52")]
 position = Vector2(-296.644, 414.765)
 
 [node name="Wall6" parent="." instance=ExtResource("6_unr52")]
-position = Vector2(438.926, 412.081)
+position = Vector2(438.926, 417.45)
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]
