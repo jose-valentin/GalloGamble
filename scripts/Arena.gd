@@ -174,4 +174,4 @@ func _on_WinnerStopTimer_timeout():
 	$PlayAgainButton.show()
 
 func _on_PlayAgainButton_pressed():
-	get_tree().change_scene_to_file("res://MainScene.tscn")
+	get_tree().change_scene_to_file("res://scene/MainScene.tscn")

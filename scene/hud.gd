@@ -3,12 +3,17 @@ signal new_game;
 signal enemy_choice
 signal player_choice(choice)
 
-
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Paper"):
+		enemy_choice.emit()
+		player_choice.emit("paper")
+	
 func _on_rock_pressed() -> void:
 	enemy_choice.emit()
 	player_choice.emit("rock")
 
 func _on_paper_pressed() -> void:
+
 	enemy_choice.emit()
 	player_choice.emit("paper")
 	
