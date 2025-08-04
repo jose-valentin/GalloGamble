@@ -1,40 +1,66 @@
 extends Node2D
-var score_player
-var score_enemy
+var score_player 
+var score_enemy 
 var player_choice
 var enemy_choice
 
-
-func new_game():
-	score_player = 0
-	score_enemy = 0
+func _ready() -> void:
+	score_player= 0
+	score_enemy= 0
+	$HUD/PlayAgain.hide()
+	$HUD/Menu.hide()
+	$HUD.score_update(0, "player")
+	$HUD.score_update(0, "enemy")
+	$HUD/Rock.show()
+	$HUD/Scissor.show()
+	$HUD/Paper.show()
+	
 
 func game_over():
+	$HUD/PlayAgain.show()
+	$HUD/Menu.show()
+	$HUD/Rock.hide()
+	$HUD/Scissor.hide()
+	$HUD/Paper.hide()
+	
+	
+func round_played():
 	if(player_choice == enemy_choice):
-		print("tie",player_choice,enemy_choice)
-	elif (player_choice == "rock" and enemy_choice == "scissor"):
-		print("You got a point",player_choice,enemy_choice)
-	elif (player_choice == "rock" and enemy_choice == "paper"):
+		print("tie"," ",player_choice," ", enemy_choice)
+		$HUD.show_winner("draw")
+		
+	elif (player_choice == "rock" and enemy_choice == "scissor") \
+		or (player_choice == "paper" and enemy_choice == "rock") \
+		or (player_choice == "scissor" and enemy_choice == "paper"):
+		score_player += 1
+		$HUD.score_update(score_player, "player")
+		$HUD.show_winner("player")
+		print("You got a point"," ",player_choice,score_player," ",enemy_choice, " ", score_enemy)
+		
+		
+	elif (player_choice == "rock" and enemy_choice == "paper") \
+	or (player_choice == "scissor" and enemy_choice == "rock") \
+	or (player_choice == "paper" and enemy_choice == "scissor"):
+		score_enemy += 1
+		$HUD.score_update(score_enemy, "enemy")
+		$HUD.show_winner("enemy")
 		print("Your enemy got a point",player_choice,enemy_choice)
-	elif (player_choice == "paper" and enemy_choice == "scissor"):
-		print("Your enemy got a point",player_choice,enemy_choice)
-	elif (player_choice == "paper" and enemy_choice == "rock"):
-		print("You got a point",player_choice,enemy_choice)
-	elif (player_choice == "scissor" and enemy_choice == "rock"):
-		print("Your enemy got a point",player_choice,enemy_choice)
-	elif (player_choice == "scissor" and enemy_choice == "paper"):
-		print("You got a point", player_choice, enemy_choice)
-	
-	
+		
+	check_score()
+
+		
 func check_score():
-	if score_player == 2:
+
+	if (score_player == 2):
 		print("You WIN!")
+		game_over()
 	elif (score_enemy == 2):
 		print('You Lost :(')
+		game_over()
 		 
 	
 func _on_hud_new_game() -> void:
-	new_game()
+	_ready()
 
 func _on_hud_enemy_choice() -> void:
 	enemy_choice = ["rock","paper","scissor"].pick_random()
@@ -42,4 +68,4 @@ func _on_hud_enemy_choice() -> void:
 
 func _on_hud_player_choice(choice: Variant) -> void:
 	player_choice = choice
-	game_over()
+	round_played()

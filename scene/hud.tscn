@@ -1,28 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://umsgaslo03wk"]
+[gd_scene load_steps=9 format=3 uid="uid://umsgaslo03wk"]
 
 [ext_resource type="Script" uid="uid://mh4mte3b3tyv" path="res://scene/hud.gd" id="1_s3k51"]
+[ext_resource type="Texture2D" uid="uid://bv6lk0wpsylvd" path="res://artwork/UntitledArtwork2 - Paper.png" id="2_nhyt6"]
+[ext_resource type="Texture2D" uid="uid://m403jqubb35x" path="res://artwork/UntitledArtwork2 - Rock.png" id="2_o8u2p"]
+[ext_resource type="FontFile" uid="uid://b3gikisq7158o" path="res://font/QuitoChicken-Regular.otf" id="2_sjh6b"]
+[ext_resource type="Texture2D" uid="uid://bnlkjg51xq1p1" path="res://artwork/UntitledArtwork2 - Paper-hoover.png" id="3_qy82l"]
+[ext_resource type="Texture2D" uid="uid://dl4jd806cej6t" path="res://artwork/UntitledArtwork2 - Scissor.png" id="4_ry2h7"]
+[ext_resource type="Texture2D" uid="uid://kjc6payy2lpo" path="res://artwork/UntitledArtwork2 - Rock-hover.png" id="5_sjh6b"]
+[ext_resource type="Texture2D" uid="uid://bp7sd41nwqwf8" path="res://artwork/UntitledArtwork2 - Scissor-hover.png" id="7_xphas"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_s3k51")
-
-[node name="Rock" type="Button" parent="."]
-offset_left = 281.0
-offset_top = 427.0
-offset_right = 350.0
-offset_bottom = 492.0
-text = "Rock"
-
-[node name="Paper" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.873
-anchor_right = 0.5
-anchor_bottom = 0.873
-offset_left = -159.0
-offset_top = -25.341
-offset_right = -91.0
-offset_bottom = 43.659
-text = "Paper"
 
 [node name="PlayAgain" type="Button" parent="."]
 anchors_preset = 8
@@ -30,10 +18,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = 26.5
-offset_right = 45.0
-offset_bottom = 94.5
+offset_left = -42.5
+offset_top = -34.0
+offset_right = 42.5
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -41,41 +29,104 @@ text = "Try Again"
 autowrap_mode = 2
 icon_alignment = 1
 
-[node name="Scissor" type="Button" parent="."]
-offset_left = 164.0
-offset_top = 426.0
-offset_right = 231.0
-offset_bottom = 494.0
-text = "Scissor"
-autowrap_mode = 2
-icon_alignment = 1
-
-[node name="Message" type="Label" parent="."]
+[node name="Menu" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -378.0
-offset_top = -60.5
-offset_right = -338.0
-offset_bottom = 8.5
+offset_left = -62.5
+offset_top = 41.0
+offset_right = 62.5
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+
+[node name="player_points" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -256.5
+offset_right = -29.0
+offset_bottom = -187.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "Rock"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -296.0
-offset_top = 207.0
-offset_right = -256.0
-offset_bottom = 247.0
+[node name="enemy_points" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -256.5
+offset_right = 67.0
+offset_bottom = -187.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-[connection signal="pressed" from="Rock" to="." method="_on_rock_pressed"]
-[connection signal="pressed" from="Paper" to="." method="_on_paper_pressed"]
+[node name="winner_text" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 167.0
+offset_right = 20.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_sjh6b")
+theme_override_font_sizes/font_size = 30
+
+[node name="Paper" type="TextureButton" parent="."]
+offset_left = 166.0
+offset_top = 423.0
+offset_right = 226.0
+offset_bottom = 480.0
+texture_normal = ExtResource("2_nhyt6")
+texture_hover = ExtResource("3_qy82l")
+
+[node name="Rock" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(0.5, 0.5)
+offset_left = 285.0
+offset_top = 423.0
+offset_right = 346.0
+offset_bottom = 485.0
+texture_normal = ExtResource("2_o8u2p")
+texture_hover = ExtResource("5_sjh6b")
+stretch_mode = 3
+
+[node name="Scissor" type="TextureButton" parent="."]
+offset_left = 31.0
+offset_top = 412.0
+offset_right = 126.0
+offset_bottom = 490.0
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("4_ry2h7")
+texture_hover = ExtResource("7_xphas")
+stretch_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
-[connection signal="pressed" from="Scissor" to="." method="_on_scissors_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Paper" to="." method="_on_paper_pressed"]
+[connection signal="pressed" from="Rock" to="." method="_on_rock_pressed"]
 [connection signal="pressed" from="Scissor" to="." method="_on_scissor_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

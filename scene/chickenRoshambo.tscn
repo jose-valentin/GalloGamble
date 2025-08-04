@@ -9,6 +9,5 @@ script = ExtResource("1_rwgap")
 [node name="HUD" parent="." instance=ExtResource("2_btqfl")]
 
 [connection signal="enemy_choice" from="HUD" to="." method="_on_hud_enemy_choice"]
-[connection signal="enemy_choice" from="HUD" to="HUD" method="_on_enemy_choice"]
 [connection signal="new_game" from="HUD" to="." method="_on_hud_new_game"]
 [connection signal="player_choice" from="HUD" to="." method="_on_hud_player_choice"]
