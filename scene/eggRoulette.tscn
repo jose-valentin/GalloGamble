@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqnhaje2p7fpq"]
+[gd_scene load_steps=18 format=3 uid="uid://cqnhaje2p7fpq"]
 
 [ext_resource type="Script" uid="uid://bmjjqltnek1xl" path="res://scripts/roulette.gd" id="2_oo5n5"]
 [ext_resource type="Shader" uid="uid://cte47vl5uj7se" path="res://scene/eggRoulette.gdshader" id="2_rs83y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b63sx54k3o6oj" path="res://scripts/cirlceWallCreator.gd" id="4_ixt7x"]
 [ext_resource type="PackedScene" uid="uid://c00eryvr86o5b" path="res://scene/egg.tscn" id="4_lxc7o"]
 [ext_resource type="Script" uid="uid://b1jg7ecdo7p8r" path="res://scripts/Egg.gd" id="5_lxc7o"]
+[ext_resource type="Texture2D" uid="uid://cn2kkyo0oe5dg" path="res://artwork/unnamedDELETETHS-removebg-preview.png" id="10_or3aq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uk48a"]
 shader = ExtResource("2_rs83y")
@@ -23,6 +24,66 @@ bounce = 0.11
 font_size = 51
 shadow_size = 21
 shadow_color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[sub_resource type="Animation" id="Animation_or3aq"]
+resource_name = "FlipSwitch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43678, 0.89727),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 3.14159, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.436747, 0.895232),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(296, 309.7), Vector2(387.71, 543.485), Vector2(296, 309)]
+}
+
+[sub_resource type="Animation" id="Animation_rs83y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(296, 351)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5t2a3"]
+_data = {
+&"FlipSwitch": SubResource("Animation_or3aq"),
+&"RESET": SubResource("Animation_rs83y")
+}
 
 [node name="Node2D" type="Sprite2D"]
 
@@ -55,13 +116,13 @@ offset = Vector2(0.2, 19.495)
 script = ExtResource("2_oo5n5")
 
 [node name="numbdetector0" type="Area2D" parent="RouletteWheel"]
-position = Vector2(1.24223, -104.348)
+position = Vector2(-5.96046e-06, -103.106)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector0"]
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector1" type="Area2D" parent="RouletteWheel"]
-position = Vector2(-72.0497, 73.2919)
+position = Vector2(-70.8075, 72.0497)
 rotation = 0.781543
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector1"]
@@ -228,9 +289,9 @@ rotation = -0.254305
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector24" type="Area2D" parent="RouletteWheel"]
-position = Vector2(-26.087, 98.1364)
+position = Vector2(-26.087, 99.3789)
 rotation = 0.290359
-scale = Vector2(0.621131, 0.771262)
+scale = Vector2(0.877495, 0.956993)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector24"]
 shape = SubResource("RectangleShape2D_oo5n5")
@@ -285,7 +346,7 @@ rotation = -0.517118
 shape = SubResource("RectangleShape2D_oo5n5")
 
 [node name="numbdetector32" type="Area2D" parent="RouletteWheel"]
-position = Vector2(19.8758, -103.106)
+position = Vector2(18.6335, -100.621)
 rotation = 0.150039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteWheel/numbdetector32"]
@@ -334,11 +395,12 @@ position = Vector2(-2.48447, -2.48444)
 scale = Vector2(1.24224, 1.24224)
 script = ExtResource("4_ixt7x")
 
-[node name="spinButton" type="Button" parent="."]
-offset_left = 229.0
-offset_top = 423.0
-offset_right = 350.0
-offset_bottom = 497.0
+[node name="spinButtonOld" type="Button" parent="."]
+visible = false
+offset_left = 242.0
+offset_top = 8.0
+offset_right = 362.935
+offset_bottom = 39.0
 text = "R O T A T E"
 
 [node name="resultLabel" type="Label" parent="."]
@@ -354,12 +416,34 @@ physics_material_override = SubResource("PhysicsMaterial_ixt7x")
 script = ExtResource("5_lxc7o")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 36.0
+offset_left = 35.0
 offset_top = 10.0
-offset_right = 374.0
+offset_right = 373.0
 offset_bottom = 87.0
 text = "Egg Roulette"
 label_settings = SubResource("LabelSettings_nldu6")
+
+[node name="betPanel" type="Button" parent="."]
+offset_left = 9.0
+offset_top = 403.0
+offset_right = 17.0
+offset_bottom = 411.0
+scale = Vector2(0.8, 0.8)
+flat = true
+
+[node name="spinButton" type="TextureButton" parent="."]
+offset_left = 296.0
+offset_top = 351.0
+offset_right = 575.0
+offset_bottom = 863.0
+scale = Vector2(0.33, 0.33)
+texture_normal = ExtResource("10_or3aq")
+metadata/_edit_use_anchors_ = true
+
+[node name="spinButtonAnimator" type="AnimationPlayer" parent="spinButton"]
+libraries = {
+&"": SubResource("AnimationLibrary_5t2a3")
+}
 
 [connection signal="body_entered" from="RouletteWheel/numbdetector0" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
 [connection signal="body_entered" from="RouletteWheel/numbdetector1" to="RouletteWheel" method="_on_body_entered"]
@@ -390,5 +474,6 @@ label_settings = SubResource("LabelSettings_nldu6")
 [connection signal="body_entered" from="RouletteWheel/numbdetector35" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
 [connection signal="body_entered" from="RouletteWheel/numbdetector36" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
 [connection signal="body_entered" from="RouletteWheel/numbdetector37" to="RouletteWheel" method="_on_NumberDetector_X_body_entered"]
-[connection signal="pressed" from="spinButton" to="." method="start_spin"]
+[connection signal="pressed" from="spinButtonOld" to="." method="start_spin"]
+[connection signal="pressed" from="spinButtonOld" to="RouletteWheel" method="_on_SpinButton_pressed"]
 [connection signal="pressed" from="spinButton" to="RouletteWheel" method="_on_SpinButton_pressed"]

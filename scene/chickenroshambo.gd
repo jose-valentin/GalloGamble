@@ -53,10 +53,10 @@ func round_played():
 func check_score():
 
 	if (score_player == 2):
-		print("You WIN!")
+		print("You WIN! 😎")
 		game_over()
 	elif (score_enemy == 2):
-		print('You Lost :(')
+		print('You Lost 😢')
 		$Enemy/AnimatedSprite2D.animation = "enemy_win"
 		$HUD/PlayAgain.position = Vector2(34,416)
 		$HUD/Menu.position = Vector2(212,415)
