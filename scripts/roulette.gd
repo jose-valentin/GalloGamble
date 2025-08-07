@@ -1,25 +1,39 @@
 extends Sprite2D
+@onready var spin_button_animator = get_node("../spinButton/spinButtonAnimator")
+@onready var status_label = get_node("/root/Node2D/Label")
+var started = false
+var result_finalized = false
+
 var overlapping_sensors := []
+var selected_bets = {}
+
 #var bets = { "red": false, "black": false, "even": false, "number": null }
-var bets = {
+var bets = { # "(1-12)", "(13-24)", "(25-36)"
 	"red": false,
 	"black": false,
 	"even": false,
 	"odd": false,
 	"high": false,
 	"low": false,
-	"dozen1": false,
-	"dozen2": false,
-	"dozen3": false,
+	"(1-12)": false,
+	"(13-24)": false,
+	"(25-36)": false,
 	"number": null
 }
 
 func _on_bet_button_pressed(bet_type):
 	bets[bet_type] = !bets[bet_type]  # Toggle the bet
 	print(bet_type.capitalize(), "bet is now", bets[bet_type])
+	var button = get_viewport().gui_get_focus_owner()
+	if selected_bets.has(bet_type):
+		selected_bets.erase(bet_type)
+		button.modulate = Color(1, 1, 1)  # Reset color to normal
+	else:
+		selected_bets[bet_type] = true
+		button.modulate = Color(1, 1, 0.5)  # Yellow-ish to show selection
 
 func _on_place_number_bet_pressed():
-	var num_selector = get_node("BettingPanel/NumberSelector")
+	var num_selector = get_node("/root/Node2D/betPanel/BettingPanel/NumberSelector")
 	bets["number"] = int(num_selector.value)
 	print("Betting on number:", bets["number"])
 
@@ -37,21 +51,98 @@ var friction := 0.99  # Closer to 1 = slower decay (longer spin)
 var min_speed := 0.05
 
 func _process(delta):
+	
 	if spinning:
+		status_label.text = scramble_text("EGG ROULETTE")
 		rotation += angular_velocity * delta
 		angular_velocity *= friction  # simpler decay formula
 		if angular_velocity <= min_speed:
 			angular_velocity = 0
 			spinning = false
+	if (angular_velocity <= min_speed) and started == true :
+		angular_velocity = 0
+		spinning = false
+			
+			# Finalize and show result
+		_check_final_result()
+
+func scramble_text(base: String) -> String:
+	var allowed_chars = "Egg roulette".replace(" ", "").split("")  # Only letters from "Egg roulette"
+	var chars = base.split("")  # Turn base string into array of characters
+
+	for i in chars.size():
+		if randf() < 0.6 and chars[i] != " ":
+			var random_index = randi() % allowed_chars.size()
+			chars[i] = allowed_chars[random_index]
+
+	# Join characters back into a string, then limit to 12 characters
+	return "".join(chars).substr(0, "Egg roulette".length())
+
+
+func _check_final_result():
+	if overlapping_sensors.size() == 0:
+		status_label.text = "No result"
+		return
+
+	var egg_position = egg.global_position
+	var closest_index = -1
+	var closest_distance = INF
+
+	for index in overlapping_sensors:
+		var detector = get_node("numbdetector" + str(index))
+		var distance = egg_position.distance_to(detector.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_index = index
+
+	if closest_index != -1 and result_finalized == false:
+		var won = evaluate_bet_result(closest_index)
+		status_label.text = "You " + ("won!" if won else "lost!") + " (" + str(closest_index) + ")"
+		result_finalized = true  # Prevent changes until next spin
+
+func evaluate_bet_result(number: int) -> bool:
+	if bets["number"] != null and bets["number"] == number:
+		return true
+	if bets["even"] and number % 2 == 0:
+		return true
+	if bets["odd"] and number % 2 == 1:
+		return true
+	if bets["low"] and number >= 1 and number <= 18:
+		return true
+	if bets["high"] and number >= 19 and number <= 36:
+		return true
+	if bets["(1-12)"] and number >= 1 and number <= 12:
+		return true
+	if bets["(13-24)"] and number >= 13 and number <= 24:
+		return true
+	if bets["(25-36)"] and number >= 25 and number <= 36:
+		return true
+	if bets["red"] and is_red(number):
+		return true
+	if bets["black"] and is_black(number):
+		return true
+	return false
+
+func is_red(number: int) -> bool:
+	var red_numbers = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
+	return number in red_numbers
+
+func is_black(number: int) -> bool:
+	var black_numbers = [2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
+	return number in black_numbers
+
+
 func start_spin():
+	started = true
+	result_finalized = false  # Reset result when new spin starts
 	if spinning:
 		return  # don't restart mid-spin
 	spinning = true
 	angular_velocity = randf_range(8.0, 15.0)  # These values feel better with decay
 
-@onready var spin_button_animator = get_node("../spinButton/spinButtonAnimator")
 
 func _on_SpinButton_pressed():
+	
 	if spinning:
 		return
 
@@ -140,9 +231,10 @@ func create_betting_interface():
 	place_number_bet.position = Vector2(170, y_offset)
 	place_number_bet.pressed.connect(_on_place_number_bet_pressed)
 	betting_panel.add_child(place_number_bet)
-
-
 	# High/Low Buttons, Dozens, Columns — Add similarly
+
+	
+	
 func _on_detector_body_entered(body: Node, index: int):
 	if body.name == "Egg":
 		if index not in overlapping_sensors:
@@ -156,9 +248,8 @@ func _on_detector_body_exited(body: Node, index: int):
 		
 		
 func _check_current_sensor():
-	if overlapping_sensors.size() == 0:
-		return
-	
+	if overlapping_sensors.size() == 0 or result_finalized:
+		return  # Don't check anything if spin result is finalized
 
 	var egg_position = egg.global_position
 	var closest_index = -1
@@ -173,7 +264,7 @@ func _check_current_sensor():
 
 	if closest_index != -1:
 		print("Egg is currently in sensor:", closest_index)
-		_check_bets(closest_index)
+		# _check_bets(closest_index) -- You can remove this or keep it for visuals, but NOT for status_label updates
 		
 func _check_bets(number):
 	var is_red = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36].has(number)
@@ -192,12 +283,12 @@ func _check_bets(number):
 	if bets["high"] and number >= 19 and number <= 36:
 		print(" You won on High!")
 	if bets["low"] and number >= 1 and number <= 18:
-		print(" You won on Low!")
-	if bets["dozen1"] and number >= 1 and number <= 12:
+		print(" You won on Low!") # # "(1-12)", "(13-24)", "(25-36)"
+	if bets["(1-12)"] and number >= 1 and number <= 12:
 		print(" You won on Dozen 1!")
-	if bets["dozen2"] and number >= 13 and number <= 24:
+	if bets["(13-24)"] and number >= 13 and number <= 24:
 		print(" You won on Dozen 2!")
-	if bets["dozen3"] and number >= 25 and number <= 36:
+	if bets["(25-36)"] and number >= 25 and number <= 36:
 		print(" You won on Dozen 3!")
 	if bets["number"] != null and bets["number"] == number:
 		print(" You hit the exact number!")

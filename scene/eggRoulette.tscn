@@ -418,7 +418,7 @@ script = ExtResource("5_lxc7o")
 [node name="Label" type="Label" parent="."]
 offset_left = 35.0
 offset_top = 10.0
-offset_right = 373.0
+offset_right = 345.0
 offset_bottom = 87.0
 text = "Egg Roulette"
 label_settings = SubResource("LabelSettings_nldu6")
