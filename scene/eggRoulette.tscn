@@ -424,10 +424,10 @@ text = "Egg Roulette"
 label_settings = SubResource("LabelSettings_nldu6")
 
 [node name="betPanel" type="Button" parent="."]
-offset_left = 9.0
-offset_top = 403.0
-offset_right = 17.0
-offset_bottom = 411.0
+offset_left = 31.0
+offset_top = 414.0
+offset_right = 39.0
+offset_bottom = 422.0
 scale = Vector2(0.8, 0.8)
 flat = true
 
