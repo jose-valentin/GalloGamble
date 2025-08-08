@@ -11,11 +11,15 @@ func _ready() -> void:
 	$HUD/Menu.hide()
 	$HUD.score_update(0, "player")
 	$HUD.score_update(0, "enemy")
-	$HUD/Rock.show()
-	$HUD/Scissor.show()
-	$HUD/Paper.show()
-	$Enemy/AnimatedSprite2D.animation = "Idle"
+	$HUD.show_RPS()
+	$Enemy/AnimatedSprite2D.animation = "enemy_enters"
+	$Enemy/AnimatedSprite2D.position = Vector2(190,80)
+	$Enemy/AnimatedSprite2D.play()
 	
+	await $Enemy/AnimatedSprite2D.animation_finished 
+
+	$Enemy/AnimatedSprite2D.animation = "Idle"
+	$Enemy/AnimatedSprite2D.position = Vector2(0,0)
 	
 func game_over():
 	$HUD/PlayAgain.show()
@@ -44,6 +48,7 @@ func round_played():
 	or (player_choice == "paper" and enemy_choice == "scissor"):
 		score_enemy += 1
 		$HUD.score_update(score_enemy, "enemy")
+		
 		$HUD.show_winner("enemy")
 		print("Your enemy got a point",player_choice,enemy_choice)
 	
@@ -57,9 +62,19 @@ func check_score():
 		game_over()
 	elif (score_enemy == 2):
 		print('You Lost 😢')
+
+		$HUD/Key_text.hide()
+		$Enemy/AnimatedSprite2D.animation = "enemy_lost"
+		$Enemy/AnimatedSprite2D.position = Vector2(190, 80)
+		print("You WIN!")
+		game_over()
+	elif (score_enemy == 2):
+		print('You Lost :(')
+		$HUD/Key_text.hide()
 		$Enemy/AnimatedSprite2D.animation = "enemy_win"
-		$HUD/PlayAgain.position = Vector2(34,416)
-		$HUD/Menu.position = Vector2(212,415)
+		$Enemy/AnimatedSprite2D.position = Vector2(0,0)
+		#$HUD/PlayAgain.position = Vector2(34,416)
+		#$HUD/Menu.position = Vector2(212,415)
 		game_over()
 		 
 	
@@ -69,11 +84,11 @@ func _on_hud_new_game() -> void:
 func _on_hud_enemy_choice() -> void:
 	enemy_choice = ["rock","paper","scissor"].pick_random()
 	$Enemy/AnimatedSprite2D.animation = enemy_choice
+	$Enemy/AnimatedSprite2D.position = Vector2(0,0)
 	$Enemy/AnimatedSprite2D.play()
-
-	
-	
 
 func _on_hud_player_choice(choice: Variant) -> void:
 	player_choice = choice
 	round_played()
+
+	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxptb4j4pwk44" path="res://scene/chickenroshambo.gd" id="1_rwgap"]
 [ext_resource type="PackedScene" uid="uid://umsgaslo03wk" path="res://scene/hud.tscn" id="2_btqfl"]
-[ext_resource type="PackedScene" uid="uid://dmbmrufbie11s" path="res://enemy.tscn" id="3_btqfl"]
+[ext_resource type="PackedScene" uid="uid://dmbmrufbie11s" path="res://scene/enemy.tscn" id="3_btqfl"]
 
 [node name="chickenRoshambo" type="Node2D"]
 script = ExtResource("1_rwgap")

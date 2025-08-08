@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://umsgaslo03wk"]
+[gd_scene load_steps=10 format=3 uid="uid://umsgaslo03wk"]
 
 [ext_resource type="Script" uid="uid://mh4mte3b3tyv" path="res://scene/hud.gd" id="1_s3k51"]
 [ext_resource type="Texture2D" uid="uid://bv6lk0wpsylvd" path="res://artwork/UntitledArtwork2 - Paper.png" id="2_nhyt6"]
 [ext_resource type="Texture2D" uid="uid://m403jqubb35x" path="res://artwork/UntitledArtwork2 - Rock.png" id="2_o8u2p"]
 [ext_resource type="FontFile" uid="uid://b3gikisq7158o" path="res://font/QuitoChicken-Regular.otf" id="2_sjh6b"]
+[ext_resource type="Texture2D" uid="uid://bm4khelmtvnhd" path="res://artwork/background.png" id="2_xphas"]
 [ext_resource type="Texture2D" uid="uid://bnlkjg51xq1p1" path="res://artwork/UntitledArtwork2 - Paper-hoover.png" id="3_qy82l"]
 [ext_resource type="Texture2D" uid="uid://dl4jd806cej6t" path="res://artwork/UntitledArtwork2 - Scissor.png" id="4_ry2h7"]
 [ext_resource type="Texture2D" uid="uid://kjc6payy2lpo" path="res://artwork/UntitledArtwork2 - Rock-hover.png" id="5_sjh6b"]
@@ -11,6 +12,10 @@
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_s3k51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(195, 259)
+texture = ExtResource("2_xphas")
 
 [node name="PlayAgain" type="Button" parent="."]
 anchors_preset = 8
@@ -48,9 +53,9 @@ text = "Main Menu"
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -262.0
+offset_top = -281.0
 offset_right = 40.0
-offset_bottom = -193.0
+offset_bottom = -212.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -63,9 +68,9 @@ autowrap_mode = 2
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -68.5
+offset_top = -76.5
 offset_right = 40.0
-offset_bottom = 0.5
+offset_bottom = -7.5
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -73,6 +78,51 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Paper" type="TextureButton" parent="."]
+offset_left = 166.0
+offset_top = 421.0
+offset_right = 226.0
+offset_bottom = 478.0
+texture_normal = ExtResource("2_nhyt6")
+texture_hover = ExtResource("3_qy82l")
+
+[node name="Rock" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(0.5, 0.5)
+offset_left = 285.0
+offset_top = 422.0
+offset_right = 346.0
+offset_bottom = 484.0
+texture_normal = ExtResource("2_o8u2p")
+texture_hover = ExtResource("5_sjh6b")
+stretch_mode = 3
+
+[node name="Scissor" type="TextureButton" parent="."]
+offset_left = 31.0
+offset_top = 408.0
+offset_right = 126.0
+offset_bottom = 486.0
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("4_ry2h7")
+texture_hover = ExtResource("7_xphas")
+stretch_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Key_text" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_sjh6b")
+theme_override_font_sizes/font_size = 22
 
 [node name="winner_text" type="Label" parent="."]
 anchors_preset = 5
@@ -86,36 +136,7 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_sjh6b")
 theme_override_font_sizes/font_size = 30
 
-[node name="Paper" type="TextureButton" parent="."]
-offset_left = 166.0
-offset_top = 423.0
-offset_right = 226.0
-offset_bottom = 480.0
-texture_normal = ExtResource("2_nhyt6")
-texture_hover = ExtResource("3_qy82l")
-
-[node name="Rock" type="TextureButton" parent="."]
-custom_minimum_size = Vector2(0.5, 0.5)
-offset_left = 285.0
-offset_top = 423.0
-offset_right = 346.0
-offset_bottom = 485.0
-texture_normal = ExtResource("2_o8u2p")
-texture_hover = ExtResource("5_sjh6b")
-stretch_mode = 3
-
-[node name="Scissor" type="TextureButton" parent="."]
-offset_left = 31.0
-offset_top = 412.0
-offset_right = 126.0
-offset_bottom = 490.0
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("4_ry2h7")
-texture_hover = ExtResource("7_xphas")
-stretch_mode = 0
-
-[node name="Timer" type="Timer" parent="."]
-
+[connection signal="hidden" from="PlayAgain" to="." method="_on_play_again_hidden"]
 [connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Paper" to="." method="_on_paper_pressed"]
