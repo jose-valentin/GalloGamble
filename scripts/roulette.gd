@@ -201,7 +201,7 @@ func create_betting_interface():
 		betting_panel.add_child(btn)
 
 	# Row 2: High / Low / Dozen1 / Dozen2 / Dozen3
-	y_offset += 50
+	y_offset += 40
 	var advanced_bet_types = ["High", "Low", "(1-12)", "(13-24)", "(25-36)"]
 	for i in range(advanced_bet_types.size()):
 		var btn = Button.new()
@@ -211,7 +211,7 @@ func create_betting_interface():
 		betting_panel.add_child(btn)
 
 	# Row 3: Single Number SpinBox + Place Number Bet Button
-	y_offset += 50
+	y_offset += 40
 	var number_label = Label.new()
 	number_label.text = "Number:"
 	number_label.position = Vector2(10, y_offset + 5)
