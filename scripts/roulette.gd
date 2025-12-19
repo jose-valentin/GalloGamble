@@ -7,6 +7,9 @@ var result_finalized = false
 var overlapping_sensors := []
 var selected_bets = {}
 
+
+
+#hey
 #var bets = { "red": false, "black": false, "even": false, "number": null }
 var bets = { # "(1-12)", "(13-24)", "(25-36)"
 	"red": false,
@@ -292,3 +295,6 @@ func _check_bets(number):
 		print(" You won on Dozen 3!")
 	if bets["number"] != null and bets["number"] == number:
 		print(" You hit the exact number!")
+		
+func _on_mainMenuPressed():
+	get_tree().change_scene_to_file("res://scene/MainScene.tscn")
